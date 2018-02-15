@@ -58,6 +58,15 @@ var css = csjs`
     max-height: 20px;
     font-size: 11px;
   }
+  .status {
+    ${styles.terminal.button_Log_Debug}
+    margin-left: 5px;
+    width: 65px;
+    min-width: 55px;
+    min-height: 20px;
+    max-height: 20px;
+    font-size: 11px;
+  }
   `
 /**
   * This just export a function that register to `newTransaction` and forward them to the logger.
@@ -149,6 +158,13 @@ function log (self, tx, api) {
 function renderKnownTransaction (self, data) {
   var from = data.tx.from
   var to = data.resolvedData.contractName + '.' + data.resolvedData.fn
+
+  var msg = ''
+  if (data.tx.status === '0x0') {
+    msg = 'Failed'
+  } else if (data.tx.status === '0x1') {
+    msg = 'Successful'
+  }
   function debug () {
     self.event.trigger('debugRequested', [data.tx.hash])
   }
@@ -157,6 +173,7 @@ function renderKnownTransaction (self, data) {
       <div class="${css.log}">
         ${context(self, {from, to, data})}
         <div class=${css.buttons}>
+        <button class=${css.status}>${msg}</button>
         <button class=${css.details} onclick=${txDetails}>Details</button>
         <button class=${css.debug} onclick=${debug}>Debug</button>
         </div>
@@ -245,6 +262,13 @@ function renderCall (self, data) {
 function renderUnknownTransaction (self, data) {
   var from = data.tx.from
   var to = data.tx.to
+
+  var msg = ''
+  if (data.tx.status === '0x0') {
+    msg = 'Failed'
+  } else if (data.tx.status === '0x1') {
+    msg = 'Successful'
+  }
   function debug () {
     self.event.trigger('debugRequested', [data.tx.hash])
   }
@@ -253,6 +277,7 @@ function renderUnknownTransaction (self, data) {
       <div class="${css.log}">
         ${context(self, {from, to, data})}
         <div class=${css.buttons}>
+          <button class=${css.status}>${msg}</button>
           <button class=${css.details} onclick=${txDetails}>Details</button>
           <button class=${css.debug} onclick=${debug}>Debug</button>
         </div>
