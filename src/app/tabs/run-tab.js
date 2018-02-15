@@ -20,9 +20,9 @@ var noInstancesText = yo`<div class="${css.noInstancesText}">0 contract Instance
 
 var pendingTxsText = yo`<span></span>`
 
-function runTab (opts = { api: {}, events: {} }) {
-  var appAPI = opts.api
-  var appEvents = opts.events
+function runTab ({ api: {}, events: {} } = {}) {
+  var appAPI = api
+  var appEvents = events
   var container = document.createElement('div')
   var events = new EventManager()
 

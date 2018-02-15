@@ -4,8 +4,7 @@ var helper = require('../../lib/helper')
 var css = require('./styles/tabbed-menu-styles')
 
 class TabbedMenu {
-  constructor (opts = { api: {}, events: {} }) {
-    var events = opts.events
+  constructor ({ api: {}, events: {} } = {}) {
     var self = this
     var tabView = document.createElement('ul')
     this.tabView = tabView

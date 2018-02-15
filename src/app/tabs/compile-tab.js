@@ -14,9 +14,9 @@ var remixLib = require('remix-lib')
 var styleGuide = remixLib.ui.themeChooser
 var styles = styleGuide.chooser()
 
-function compileTab (opts = { api: {}, events: {} }) {
-  var appAPI = opts.api
-  var appEvents = opts.events
+function compileTab ({ api: {}, events: {} } = {}) {
+  var appAPI = api
+  var appEvents = events
 
   // Containers
   var warnCompilationSlow = yo`<i title="Copy Address" style="display:none" class="${css.warnCompilationSlow} fa fa-exclamation-triangle" aria-hidden="true"></i>`

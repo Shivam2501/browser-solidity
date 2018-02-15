@@ -10,9 +10,9 @@ var modal = require('../ui/modal-dialog-custom')
 
 var css = require('./styles/settings-tab-styles')
 
-function SettingsTab (opts = { api: {}, events: {} }) {
-  var appAPI = opts.api
-  var appEvents = opts.events
+function SettingsTab ({ api: {}, events: {} } = {}) {
+  var appAPI = api
+  var appEvents = events
 
   var queryParams = new QueryParams()
 

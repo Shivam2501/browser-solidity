@@ -1,7 +1,7 @@
 var yo = require('yo-yo')
 var css = require('./styles/debugger-tab-styles')
 
-function debuggerTab (opts = { api: {}, events: {} }) {
+function debuggerTab ({ api: {}, events: {} } = {}) {
   var el = yo`
     <div class="${css.debuggerTabView} "id="debugView">
       <div id="debugger" class="${css.debugger}"></div>

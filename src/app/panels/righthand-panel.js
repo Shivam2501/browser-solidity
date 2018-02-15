@@ -13,10 +13,9 @@ var PluginManager = require('../../pluginManager')
 
 var css = require('./styles/righthand-panel-styles')
 
-function RighthandPanel (opts = { api: {}, events: {} }) {
+function RighthandPanel ({ api: {}, events: {} } = {}) {
   var self = this
-  var appAPI = opts.api
-  var events = opts.events
+  var appAPI = api
   self._api = appAPI
   self.event = new EventManager()
   self._view = {}

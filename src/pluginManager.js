@@ -10,9 +10,7 @@
  * @param {String} txHash    - hash of the transaction
  */
 class PluginManager {
-  constructor (opts = { api: {}, events: {} }) {
-    var api = opts.api
-    var events = opts.events
+  constructor ({ api: {}, events: {} } = {}) {
     this.plugins = {}
     this.inFocus
     events.compiler.register('compilationFinished', (success, data, source) => {

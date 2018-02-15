@@ -33,8 +33,7 @@ function supportTabView (gitterIframe) {
   `
 }
 
-function supportTab (opts = { api: {}, events: {} }) {
-  var events = opts.events
+function supportTab ({ api: {}, events: {} } = {}) {
   let el = supportTabView('')
   let gitterIsLoaded = false
 
