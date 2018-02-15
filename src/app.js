@@ -660,7 +660,10 @@ Please make a backup of your contracts and start using http://remix.ethereum.org
     editor: editor.event,
     staticAnalysis: staticanalysis.event
   }
-  self._components.righthandpanel = new RighthandPanel(rhpAPI, rhpEvents, {})
+  var rhpOpts = { api: {}, events: {} }
+  Object.keys(rhpAPI).forEach(key => (rhpOpts.api[key] = rhpAPI[key]))
+  Object.keys(rhpEvents).forEach(key => (rhpOpts.events[key] = rhpEvents[key]))
+  self._components.righthandpanel = new RighthandPanel(rhpOpts)
   self._view.rightpanel.appendChild(self._components.righthandpanel.render())
   self._components.righthandpanel.init()
   self._components.righthandpanel.event.register('resize', delta => self._adjustLayout('right', delta))
@@ -840,7 +843,7 @@ Please make a backup of your contracts and start using http://remix.ethereum.org
   })
 
   function startdebugging (txHash) {
-    self.event.trigger('debuggingRequested', [])
+    self._components.righthandpanel.showDebugger()
     transactionDebugger.debug(txHash)
   }
 }

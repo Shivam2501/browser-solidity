@@ -4,8 +4,10 @@ var helper = require('../../lib/helper')
 var css = require('./styles/tabbed-menu-styles')
 
 class TabbedMenu {
-  constructor (tabView, events) {
+  constructor (opts = { api: {}, events: {} }) {
+    var events = opts.events
     var self = this
+    var tabView = document.createElement('ul')
     this.tabView = tabView
     this.events = events
     this.tabs = {}
@@ -19,7 +21,7 @@ class TabbedMenu {
       self.selectTab(tabView.querySelector(`li.${tabName}`))
     })
   }
-
+  render () { return this.tabView }
   selectTabByTitle (title) {
     this.selectTab(this.tabs[title])
   }

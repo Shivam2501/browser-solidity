@@ -10,9 +10,9 @@ var modal = require('../ui/modal-dialog-custom')
 
 var css = require('./styles/settings-tab-styles')
 
-function SettingsTab (container, appAPI, appEvents) {
-  if (typeof container === 'string') container = document.querySelector(container)
-  if (!container) throw new Error('no container given')
+function SettingsTab (opts = { api: {}, events: {} }) {
+  var appAPI = opts.api
+  var appEvents = opts.events
 
   var queryParams = new QueryParams()
 
@@ -203,8 +203,7 @@ function SettingsTab (container, appAPI, appEvents) {
     loadVersion('builtin', queryParams, appAPI, el)
   })
 
-  container.appendChild(el)
-  return el
+  return { render () { return el } }
 }
 
 function setVersionText (text, el) {

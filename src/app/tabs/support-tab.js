@@ -33,7 +33,8 @@ function supportTabView (gitterIframe) {
   `
 }
 
-function supportTab (container, events) {
+function supportTab (opts = { api: {}, events: {} }) {
+  var events = opts.events
   let el = supportTabView('')
   let gitterIsLoaded = false
 
@@ -47,8 +48,7 @@ function supportTab (container, events) {
     gitterIsLoaded = true
   })
 
-  container.appendChild(el)
-  return el
+  return { render () { return el } }
 }
 
 function openLink () {

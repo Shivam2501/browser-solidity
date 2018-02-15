@@ -20,7 +20,10 @@ var noInstancesText = yo`<div class="${css.noInstancesText}">0 contract Instance
 
 var pendingTxsText = yo`<span></span>`
 
-function runTab (container, appAPI, appEvents) {
+function runTab (opts = { api: {}, events: {} }) {
+  var appAPI = opts.api
+  var appEvents = opts.events
+  var container = document.createElement('div')
   var events = new EventManager()
 
   var clearInstanceElement = yo`<i class="${css.clearinstance} fa fa-minus-square-o" title="Clear Instances List" aria-hidden="true"></i>`
@@ -95,7 +98,7 @@ function runTab (container, appAPI, appEvents) {
     noInstancesText.style.display = 'block'
     instanceContainer.appendChild(noInstancesText)
   })
-  return el
+  return { render () { return container } }
 }
 
 function fillAccountsList (appAPI, container) {
