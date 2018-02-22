@@ -436,7 +436,7 @@ function settings (container, appAPI, appEvents) {
   // EVENTS
   appEvents.udapp.register('transactionExecuted', (error, from, to, data, lookupOnly, txResult) => {
     if (error) return
-    if (!lookupOnly) el.querySelector('#value').value = '0'
+    if (!lookupOnly) el.querySelector('#value').value = '300'
     updateAccountBalances(container, appAPI)
   })
 
