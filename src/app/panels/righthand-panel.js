@@ -7,7 +7,7 @@ var runTab = require('../tabs/run-tab')
 var settingsTab = require('../tabs/settings-tab')
 var analysisTab = require('../tabs/analysis-tab')
 var debuggerTab = require('../tabs/debugger-tab')
-var supportTab = require('../tabs/support-tab')
+// var supportTab = require('../tabs/support-tab')
 var pluginTab = require('../tabs/plugin-tab')
 var PluginManager = require('../../pluginManager')
 
@@ -51,7 +51,7 @@ function RighthandPanel (appAPI, events, opts) {
   this._view.tabbedMenu.addTab('Settings', 'settingsView', settingsTab(optionViews, appAPI, events))
   this._view.tabbedMenu.addTab('Analysis', 'staticanalysisView', analysisTab(optionViews))
   this._view.tabbedMenu.addTab('Debugger', 'debugView', debuggerTab(optionViews))
-  this._view.tabbedMenu.addTab('Support', 'supportView', supportTab(optionViews, events))
+  // this._view.tabbedMenu.addTab('Support', 'supportView', supportTab(optionViews, events))
   this._view.tabbedMenu.selectTabByTitle('Compile')
 
   self.pluginManager = new PluginManager(appAPI, events)

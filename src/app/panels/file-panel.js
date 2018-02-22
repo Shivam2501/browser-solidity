@@ -6,7 +6,7 @@ var minixhr = require('minixhr')  // simple and small cross-browser XMLHttpReque
 var remixLib = require('remix-lib')
 var EventManager = remixLib.EventManager
 var FileExplorer = require('../files/file-explorer')
-var modalDialog = require('../ui/modaldialog')
+// var modalDialog = require('../ui/modaldialog')
 var modalDialogCustom = require('../ui/modal-dialog-custom')
 var QueryParams = require('../../lib/query-params')
 var queryParams = new QueryParams()
@@ -48,7 +48,7 @@ function filepanel (appAPI, filesProvider) {
 
   var dragbar = yo`<div onmousedown=${mousedown} class=${css.dragbar}></div>`
 
-  function remixdDialog () {
+  /* function remixdDialog () {
     return yo`
       <div class=${css.dialog}>
         <div class=${css.dialogParagraph}>Interact with your file system from Remix. Click connect and find shared folder in the Remix file explorer (under localhost).
@@ -62,7 +62,7 @@ function filepanel (appAPI, filesProvider) {
         <div class=${css.dialogParagraph}>This feature is still in Alpha, so we recommend you to keep a copy of the shared folder.</div>
       </div>
     `
-  }
+  } */
 
   function template () {
     return yo`
@@ -84,9 +84,6 @@ function filepanel (appAPI, filesProvider) {
             </span>
             <span class="${css.copyFiles}" title="Copy all files to another instance of Browser-solidity" onclick=${copyFiles}>
               <i class="fa fa-files-o" aria-hidden="true"></i>
-            </span>
-            <span onclick=${connectToLocalhost} class="${css.connectToLocalhost}">
-              <i class="websocketconn fa fa-link" title="Connect to Localhost"></i>
             </span>
           </div>
           <div class=${css.treeviews}>
@@ -241,7 +238,7 @@ function filepanel (appAPI, filesProvider) {
     *
     * @param {String} txHash    - hash of the transaction
     */
-  function connectToLocalhost () {
+  /** function connectToLocalhost () {
     if (filesProvider['localhost'].isConnected()) {
       filesProvider['localhost'].close((error) => {
         if (error) console.log(error)
@@ -259,7 +256,7 @@ function filepanel (appAPI, filesProvider) {
             })
           }})
     }
-  }
+  } */
 
   // ------------------ gist publish --------------
 
